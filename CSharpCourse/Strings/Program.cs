@@ -48,4 +48,4 @@ Console.ReadLine();
 
    
 
-    Console.WriteLine(String.Format("{0}, {1}", city, city2));
+    //Console.WriteLine(String.Format("{0}, {1}", city, city2));
