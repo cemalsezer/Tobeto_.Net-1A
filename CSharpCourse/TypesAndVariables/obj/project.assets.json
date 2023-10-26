@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\cemal\\desktop\\Tobeto\\1A\\CSharp\\CSharpCourse\\TypesAndVariables\\TypesAndVariables.csproj",
+      "projectUniqueName": "C:\\Users\\cemal\\desktop\\PR\\Tobeto_.Net-1A\\CSharpCourse\\TypesAndVariables\\TypesAndVariables.csproj",
       "projectName": "TypesAndVariables",
-      "projectPath": "C:\\Users\\cemal\\desktop\\Tobeto\\1A\\CSharp\\CSharpCourse\\TypesAndVariables\\TypesAndVariables.csproj",
+      "projectPath": "C:\\Users\\cemal\\desktop\\PR\\Tobeto_.Net-1A\\CSharpCourse\\TypesAndVariables\\TypesAndVariables.csproj",
       "packagesPath": "C:\\Users\\cemal\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\cemal\\desktop\\Tobeto\\1A\\CSharp\\CSharpCourse\\TypesAndVariables\\obj\\",
+      "outputPath": "C:\\Users\\cemal\\desktop\\PR\\Tobeto_.Net-1A\\CSharpCourse\\TypesAndVariables\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
