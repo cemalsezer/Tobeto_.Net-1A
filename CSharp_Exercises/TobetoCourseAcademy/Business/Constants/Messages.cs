@@ -32,5 +32,6 @@ namespace Business.Constants
         public static string InstructorDeleted = "Instructor is deleted";
         public static string InstructorUpdated = "Instructor is updated";
 
+        public static string InstructorsListed = "Instructors are listed";
     }
 }

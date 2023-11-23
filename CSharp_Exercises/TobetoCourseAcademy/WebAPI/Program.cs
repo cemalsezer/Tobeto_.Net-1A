@@ -22,6 +22,8 @@ namespace WebAPI
             builder.Services.AddSingleton<ICategoryDal, EfCategoryDal>();
             builder.Services.AddSingleton<ICourseService, CourseManager>();
             builder.Services.AddSingleton<ICourseDal, EfCourseDal>();
+            builder.Services.AddSingleton<IInstructorService, InstructorManager>();
+            builder.Services.AddSingleton<IInstructorDal, EfInstructorDal>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
