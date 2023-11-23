@@ -23,7 +23,7 @@ namespace Business.Concretes
 
         public IDataResult<List<Category>> GetAll()
         {
-            return new SuccesDataResult<List<Category>>(_categoryDal.GetAll());
+            return new SuccesDataResult<List<Category>>(_categoryDal.GetAll(),Messages.CategoryListed);
         }
 
         public IDataResult<List<Category>> GetByCategoryId(int id)

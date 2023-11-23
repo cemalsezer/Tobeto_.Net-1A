@@ -43,7 +43,7 @@ namespace Business.Concretes
 
         public IDataResult<List<Course>> GetAll()
         {
-            if(DateTime.Now.Hour == 18)
+            if(DateTime.Now.Hour == 12)
             {
                 return new ErrorDataResult<List<Course>>(Messages.MaintenanceTime);
             }

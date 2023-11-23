@@ -14,6 +14,7 @@ namespace Business.Constants
         public static string CategoryUpdated = "Category is updated";
 
         public static string CategoryDeleted = "Category is deleted";
+        public static string CategoryListed = "Categories are listed";
 
         public static string CourseNameInvalid = "Course name is invalid";
 
@@ -30,5 +31,6 @@ namespace Business.Constants
         public static string InstructorAdd = "Instructor is added";
         public static string InstructorDeleted = "Instructor is deleted";
         public static string InstructorUpdated = "Instructor is updated";
+
     }
 }
