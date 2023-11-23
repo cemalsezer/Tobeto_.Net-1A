@@ -7,10 +7,13 @@ using System.Threading.Tasks;
 
 namespace Entities.Concretes
 {
-    public class Category : IEntity
+    public class Instructor:IEntity
+
     {
         List<Course> Courses = new List<Course>();
-        public int Id { get; set; }
+
+        public int InstructorId { get; set; }
         public string Name { get; set; }
+
     }
 }

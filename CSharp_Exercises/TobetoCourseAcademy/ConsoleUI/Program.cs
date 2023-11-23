@@ -1,5 +1,8 @@
 ﻿using Business.Concretes;
+using Core.Utilities.Results;
+using DataAccess.Concretes.EntityFramework;
 using Entities.Concretes;
+using Microsoft.EntityFrameworkCore.Query;
 using System.ComponentModel;
 
 namespace ConsoleUI
@@ -8,12 +11,22 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            Category category1 = new Category();
-            category1.Id = 1;
-            category1.Name = "Test";
+            CourseManager courseManager = new CourseManager(new EfCourseDal());
+            var result = courseManager.GetAll();
 
-            CategoryManager categoryManager = new CategoryManager();
-            categoryManager.Add(category1);
+            if (result.IsSuccess)
+            {
+                foreach (var course in result.Data)
+                {
+                    Console.WriteLine(course.Name);
+                }
+                Console.WriteLine(result.Message);
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
+
         }
     }
 }
