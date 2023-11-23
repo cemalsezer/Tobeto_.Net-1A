@@ -1,4 +1,9 @@
 
+using Business.Abstracts;
+using Business.Concretes;
+using DataAccess.Abstracts;
+using DataAccess.Concretes.EntityFramework;
+
 namespace WebAPI
 {
     public class Program
@@ -13,7 +18,8 @@ namespace WebAPI
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-
+            builder.Services.AddSingleton<ICategoryService, CategoryManager>();
+            builder.Services.AddSingleton<ICategoryDal, EfCategoryDal>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
