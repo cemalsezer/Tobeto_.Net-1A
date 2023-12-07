@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Entities.Concretes;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,10 @@ namespace DataAccess.Contexts
     public class TobetoCourseAcademyContext : DbContext
     {
         protected IConfiguration Configuration { get; set; }
-        public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Instructor> Instructors { get; set; }
+
         public TobetoCourseAcademyContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
         {
             Configuration = configuration;
