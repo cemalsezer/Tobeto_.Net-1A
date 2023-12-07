@@ -1,5 +1,9 @@
 ﻿using Core.DataAccess.Dynamic;
 using Core.DataAccess.Paging;
+using Core.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Query;
 using System;
 using System.Collections;
 using System.Collections.Generic;

@@ -1,5 +1,7 @@
 ﻿using Core.DataAccess.Dynamic;
 using Core.DataAccess.Paging;
+using Core.Entities;
+using Microsoft.EntityFrameworkCore.Query;
 using System;
 using System.Collections.Generic;
 using System.Linq;
