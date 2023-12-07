@@ -12,5 +12,7 @@ namespace Business.Abstracts
     {
         Task<Paginate<Instructor>> GetListAsync();
         Task Add(Instructor instructor);
+        Task Update(Instructor instructor);
+        Task Delete(Instructor instructor);
     }
 }

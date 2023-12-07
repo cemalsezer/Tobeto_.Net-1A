@@ -22,10 +22,22 @@ namespace Business.Concretes
             await _courseDal.AddAsync(course);
         }
 
+        public async Task Delete(Course course)
+        {
+            await _courseDal.DeleteAsync(course);
+
+        }
+
         public async Task<Paginate<Course>> GetListAsync()
         {
             var result = await _courseDal.GetListAsync();
             return result;
+        }
+
+        public async Task Update(Course course)
+        {
+            await _courseDal.UpdateAsync(course);
+
         }
     }
 }

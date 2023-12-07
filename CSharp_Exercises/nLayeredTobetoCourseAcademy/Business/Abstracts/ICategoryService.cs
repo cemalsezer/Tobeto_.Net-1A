@@ -1,4 +1,5 @@
-﻿using Core.DataAccess.Paging;
+﻿
+using Core.DataAccess.Paging;
 using Entities.Concretes;
 using System;
 using System.Collections.Generic;
@@ -12,5 +13,7 @@ namespace Business.Abstracts
     {
         Task<Paginate<Category>> GetListAsync(); 
         Task Add(Category category);
+        Task Update(Category category);
+        Task Delete(Category category);
     }
 }

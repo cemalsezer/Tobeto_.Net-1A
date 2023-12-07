@@ -23,6 +23,15 @@ namespace Business.Concretes
             await _categoryDal.AddAsync(category);
         }
 
+        public async Task Update(Category category)
+        {
+            await _categoryDal.UpdateAsync(category);
+        }
+        public async Task Delete(Category category)
+        {
+            await _categoryDal.DeleteAsync(category);
+        }
+
         public async Task<Paginate<Category>> GetListAsync()
         {
             var result = await _categoryDal.GetListAsync();
