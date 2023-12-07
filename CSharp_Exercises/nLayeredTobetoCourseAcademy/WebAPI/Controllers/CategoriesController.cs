@@ -16,16 +16,33 @@ namespace WebAPI.Controllers
             _categoryService = categoryService;
         }
 
-        [HttpPost]
+        [HttpPost("add")]
         public async Task<IActionResult> Add([FromBody] Category category)
         {
-            await _categoryService.Add(category); return Ok();
+            await _categoryService.Add(category); 
+            return Ok();
         }
 
         [HttpGet]
         public async Task<IActionResult> GetList()
         {
-            var result = await _categoryService.GetListAsync(); return Ok(result);
+            var result = await _categoryService.GetListAsync(); 
+            return Ok(result);
+        }
+
+        [HttpPut("update")]
+        [HttpPatch("update")]
+        public async Task<IActionResult> Update([FromBody] Category category)
+        {
+            await _categoryService.Update(category);
+            return Ok();
+        }
+
+        [HttpPost("delete")]
+        public async Task<IActionResult> Delete([FromBody] Category category)
+        {
+            await _categoryService.Delete(category);
+            return Ok();
         }
     }
 }
