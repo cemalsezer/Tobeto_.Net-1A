@@ -17,13 +17,14 @@ namespace Core.DataAccess.Paging
             )
         {
             int count = await source.CountAsync(cancellationToken).ConfigureAwait(false);
-
+            //List<T> items = await source.Skip((index - from) * size).Take(size).ToListAsync(cancellationToken)
+            //                       .ConfigureAwait(false);
             List<T> items = await source.Skip(index * size).Take(size).ToListAsync(cancellationToken).ConfigureAwait(false);
 
             Paginate<T> list = new()
             {
                 Index = index,
-                Count = count,
+                Count = count,  
                 Items = items,
                 Size = size,
                 Pages = (int)Math.Ceiling(count / (double)size)
