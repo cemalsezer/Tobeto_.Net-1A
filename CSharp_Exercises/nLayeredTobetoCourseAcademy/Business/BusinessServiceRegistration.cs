@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Business.Abstracts;
+using Business.Concretes;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +13,9 @@ namespace Business
     {
         public static IServiceCollection AddBusinessServices(this IServiceCollection services)
         {
-            services.AddScoped<IProductService, ProductManager>();
+            services.AddScoped<ICategoryService, CategoryManager>();
+            services.AddScoped<ICourseService, CourseManager>();
+            services.AddScoped<IInstructorService, InstructorManager>();
             return services;
         }
     }

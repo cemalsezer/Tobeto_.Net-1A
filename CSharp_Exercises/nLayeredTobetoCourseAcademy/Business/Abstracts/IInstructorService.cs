@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Core.DataAccess.Paging;
+using Entities.Concretes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +10,7 @@ namespace Business.Abstracts
 {
     public interface IInstructorService
     {
+        Task<Paginate<Instructor>> GetListAsync();
+        Task Add(Instructor instructor);
     }
 }
