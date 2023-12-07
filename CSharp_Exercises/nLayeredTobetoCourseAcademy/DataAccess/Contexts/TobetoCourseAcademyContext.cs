@@ -17,15 +17,22 @@ namespace DataAccess.Contexts
         public DbSet<Course> Courses { get; set; }
         public DbSet<Instructor> Instructors { get; set; }
 
+       
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+        //}
         public TobetoCourseAcademyContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
         {
             Configuration = configuration;
-            Database.EnsureCreated();
-        }
+            //Database.EnsureCreated();
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) 
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+            optionsBuilder.UseSqlServer(@"Server=Cemal;Database=TobetoCourseAcademy;Trusted_Connection=true;TrustServerCertificate=true");
+            //base.OnConfiguring(optionsBuilder.UseSqlServer(Configuration.GetConnectionString("nLayeredTobeteCourseAcademy")));
         }
     }
 }
