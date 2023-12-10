@@ -1,4 +1,5 @@
 using Business;
+using Business.Mapping;
 using DataAccess;
 
 namespace WebAPI
@@ -10,6 +11,7 @@ namespace WebAPI
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddAutoMapper(typeof(CategoryMapping), typeof(CourseMapping), typeof(InstructorMapping));
             builder.Services.AddBusinessServices();
             builder.Services.AddDataAccessServices(builder.Configuration);
 

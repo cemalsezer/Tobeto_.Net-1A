@@ -1,4 +1,5 @@
 ﻿using Business.Abstracts;
+using Business.Dtos.Requests;
 using Entities.Concretes;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,7 +18,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public async Task<IActionResult> Add([FromBody] Course course)
+        public async Task<IActionResult> Add([FromBody] CreateCourseRequest course)
         {
             await _courseService.Add(course);
             return Ok();
@@ -30,19 +31,19 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
 
-        [HttpPut("update")]
-        [HttpPatch("update")]
-        public async Task<IActionResult> Update([FromBody] Course course)
-        {
-            await _courseService.Update(course);
-            return Ok();
-        }
+        //[HttpPut("update")]
+        //[HttpPatch("update")]
+        //public async Task<IActionResult> Update([FromBody] Course course)
+        //{
+        //    await _courseService.Update(course);
+        //    return Ok();
+        //}
 
-        [HttpPost("delete")]
-        public async Task<IActionResult> Delete([FromBody] Course course)
-        {
-            await _courseService.Delete(course);
-            return Ok();
-        }
+        //[HttpPost("delete")]
+        //public async Task<IActionResult> Delete([FromBody] Course course)
+        //{
+        //    await _courseService.Delete(course);
+        //    return Ok();
+        //}
     }
 }
