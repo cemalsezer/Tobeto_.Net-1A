@@ -17,7 +17,9 @@ namespace DataAccess
         public static IServiceCollection AddDataAccessServices(this IServiceCollection services, IConfiguration configuration)
         {
             //services.AddDbContext<TobetoCourseAcademyContext>(options => options.UseInMemoryDatabase("nArchitecture"));
-            services.AddDbContext<TobetoCourseAcademyContext>(options => options.UseSqlServer(configuration.GetConnectionString("nLayeredTobeteCourseAcademy")));
+            //services.AddDbContext<TobetoCourseAcademyContext>(options => options.UseSqlServer(
+            //    ("Server=Cemal;Database=TobetoCourseAcademy;Trusted_Connection=true;TrustServerCertificate=true")));
+            services.AddDbContext<TobetoCourseAcademyContext>(options => options.UseSqlServer(configuration.GetConnectionString("TobetoCourseAcademy")));
             services.AddScoped<ICourseDal, EfCourseDal>();
             services.AddScoped<ICategoryDal, EfCategoryDal>();
             services.AddScoped<IInstructorDal, EfInstructorDal>();
