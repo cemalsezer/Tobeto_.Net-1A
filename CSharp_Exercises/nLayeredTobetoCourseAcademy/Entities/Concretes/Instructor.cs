@@ -10,7 +10,6 @@ namespace Entities.Concretes
     public class Instructor : Entity<Guid>
     {
         List<Course> Courses = new List<Course>();
-        public int Id { get; set; }
         public string Name { get; set; }
     }
 }
