@@ -1,4 +1,7 @@
-﻿using Business.Abstracts;
+﻿using AutoMapper;
+using Business.Abstracts;
+using Business.Dtos.Requests;
+using Business.Dtos.Responses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using Entities.Concretes;
@@ -13,29 +16,24 @@ namespace Business.Concretes
     public class CategoryManager : ICategoryService
     {
         private ICategoryDal _categoryDal;
+        private readonly IMapper _mapper;
 
-        public CategoryManager(ICategoryDal categoryDal)
+        public CategoryManager(ICategoryDal categoryDal, IMapper mapper)
         {
             _categoryDal = categoryDal;
+            _mapper = mapper;
         }
-        public async Task Add(Category category)
+        public async Task<CreatedCategoryResponse> Add(CreateCategoryRequest createCategoryRequest)
         {
-            await _categoryDal.AddAsync(category);
+            Category category = _mapper.Map<Category>(createCategoryRequest);
+            var createCategory = await _categoryDal.AddAsync(category);
+            return _mapper.Map<CreatedCategoryResponse>(createCategory);
         }
 
-        public async Task Update(Category category)
-        {
-            await _categoryDal.UpdateAsync(category);
-        }
-        public async Task Delete(Category category)
-        {
-            await _categoryDal.DeleteAsync(category);
-        }
-
-        public async Task<Paginate<Category>> GetListAsync()
+        public async Task<Paginate<CreatedCategoryResponse>> GetListAsync()
         {
             var result = await _categoryDal.GetListAsync();
-            return result;
+            return _mapper.Map<Paginate<CreatedCategoryResponse>>(result);
         }
     }
 }

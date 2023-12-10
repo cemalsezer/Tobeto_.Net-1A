@@ -1,4 +1,7 @@
-﻿using Business.Abstracts;
+﻿using AutoMapper;
+using Business.Abstracts;
+using Business.Dtos.Requests;
+using Business.Dtos.Responses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using Entities.Concretes;
@@ -13,31 +16,24 @@ namespace Business.Concretes
     public class CourseManager : ICourseService
     {
         private ICourseDal _courseDal;
-        public CourseManager(ICourseDal courseDal)
+        private readonly IMapper _mapper;
+
+        public CourseManager(ICourseDal courseDal, IMapper mapper)
         {
             _courseDal = courseDal;
+            _mapper = mapper;
         }
-        public async Task Add(Course course)
+        public async Task<CreatedCourseResponse> Add(CreateCourseRequest createCourseRequest)
         {
-            await _courseDal.AddAsync(course);
+            Course course = _mapper.Map<Course>(createCourseRequest);
+            var createCourse = await _courseDal.AddAsync(course);
+            return _mapper.Map<CreatedCourseResponse>(createCourse);
         }
 
-        public async Task Delete(Course course)
-        {
-            await _courseDal.DeleteAsync(course);
-
-        }
-
-        public async Task<Paginate<Course>> GetListAsync()
+        public async Task<Paginate<CreatedCourseResponse>> GetListAsync()
         {
             var result = await _courseDal.GetListAsync();
-            return result;
-        }
-
-        public async Task Update(Course course)
-        {
-            await _courseDal.UpdateAsync(course);
-
+            return _mapper.Map<Paginate<CreatedCourseResponse>>(result);
         }
     }
 }
