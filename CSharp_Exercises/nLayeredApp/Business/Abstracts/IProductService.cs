@@ -1,4 +1,6 @@
-﻿using Core.DataAccess.Paging;
+﻿using Business.Dtos.Requests;
+using Business.Dtos.Responses;
+using Core.DataAccess.Paging;
 using Entities.Concretes;
 using System;
 using System.Collections.Generic;
@@ -10,7 +12,7 @@ namespace Business.Abstracts
 {
     public interface IProductService
     {
-        Task<Paginate<Product>> GetListAsync();
-        Task Add(Product product);
+        Task<Paginate<CreatedProductResponse>> GetListAsync();
+        Task<CreatedProductResponse> Add(CreateProductRequest createProductRequest);
     }
 }
