@@ -5,6 +5,7 @@ using Business.Dtos.Responses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using Entities.Concretes;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,7 +17,7 @@ namespace Business.Concretes
     public class ProductManager : IProductService
     {
         private IProductDal _productDal;
-        private readonly IMapper _mapper;
+        private IMapper _mapper;
 
         public ProductManager(IProductDal productDal, IMapper mapper)
         {
@@ -26,8 +27,9 @@ namespace Business.Concretes
         public async Task<CreatedProductResponse> Add(CreateProductRequest createProductRequest)
         {
             Product product = _mapper.Map<Product>(createProductRequest);
-            var createProduct = await _productDal.AddAsync(product);
-            return _mapper.Map<CreatedProductResponse>(createProduct);
+            Product createdProduct = await _productDal.AddAsync(product);
+            CreatedProductResponse createdProductResponse = _mapper.Map<CreatedProductResponse>(createdProduct);
+            return createdProductResponse;
             //Product product = new Product();
             //product.Id=Guid.NewGuid();
             //product.ProductName= createProductRequest.ProductName;
@@ -46,10 +48,12 @@ namespace Business.Concretes
 
             //return createdProductResponse;
         }
-        public async Task<Paginate<CreatedProductResponse>> GetListAsync()
+        public async Task<Paginate<GetListedProductResponse>> GetListAsync()
         {
-            var result = await _productDal.GetListAsync();
-            return _mapper.Map<Paginate<CreatedProductResponse>>(result);
+            var data = await _productDal.GetListAsync(
+                include: p => p.Include(p => p.category)); 
+            var result = _mapper.Map<Paginate<GetListedProductResponse>>(data);
+            return result;
         }
 
         
