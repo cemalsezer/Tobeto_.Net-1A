@@ -8,42 +8,46 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CategoriesController : ControllerBase
+    public class CategoryController : ControllerBase
     {
         ICategoryService _categoryService;
 
-        public CategoriesController(ICategoryService categoryService)
+        public CategoryController(ICategoryService categoryService)
         {
             _categoryService = categoryService;
         }
-
-        [HttpPost("add")]
+        [HttpPost("Add")]
         public async Task<IActionResult> Add([FromBody] CreateCategoryRequest category)
         {
-            await _categoryService.Add(category); 
-            return Ok();
+            var result = await _categoryService.Add(category);
+            return Ok(result);
         }
-
-        [HttpGet]
+        [HttpGet("GetAll")]
         public async Task<IActionResult> GetList()
         {
-            var result = await _categoryService.GetListAsync(); 
+            var result = await _categoryService.GetListAsync();
             return Ok(result);
         }
 
-        //[HttpPut("update")]
-        //[HttpPatch("update")]
-        //public async Task<IActionResult> Update([FromBody] Category category)
-        //{
-        //    await _categoryService.Update(category);
-        //    return Ok();
-        //}
+        [HttpPut("Update")]
+        public async Task<IActionResult> Update([FromBody] UpdateCategoryRequest category)
+        {
+            var result = await _categoryService.Update(category);
+            return Ok(result);
+        }
 
-        //[HttpPost("delete")]
-        //public async Task<IActionResult> Delete([FromBody] Category category)
-        //{
-        //    await _categoryService.Delete(category);
-        //    return Ok();
-        //}
+        [HttpDelete("Delete")]
+        public async Task<IActionResult> Delete([FromBody] DeleteCategoryRequest category)
+        {
+            var result = await _categoryService.Delete(category);
+            return Ok(result);
+        }
+
+        [HttpGet("GetById")]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            var result = await _categoryService.GetAsync(c => c.Id == id);
+            return Ok(result);
+        }
     }
 }

@@ -8,42 +8,45 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class InstructorsController : ControllerBase
+    public class InstructorController : ControllerBase
     {
         IInstructorService _instructorService;
-
-        public InstructorsController(IInstructorService instructorService)
+        public InstructorController(IInstructorService instructorService)
         {
             _instructorService = instructorService;
         }
-
-        [HttpPost("add")]
+        [HttpPost("Add")]
         public async Task<IActionResult> Add([FromBody] CreateInstructorRequest instructor)
         {
-            await _instructorService.Add(instructor);
-            return Ok();
+            var result = await _instructorService.Add(instructor);
+            return Ok(result);
         }
-
-        [HttpGet]
+        [HttpGet("GetAll")]
         public async Task<IActionResult> GetList()
         {
             var result = await _instructorService.GetListAsync();
             return Ok(result);
         }
 
-        //[HttpPut("update")]
-        //[HttpPatch("update")]
-        //public async Task<IActionResult> Update([FromBody] Instructor instructor)
-        //{
-        //    await _instructorService.Update(instructor);
-        //    return Ok();
-        //}
+        [HttpPut("Update")]
+        public async Task<IActionResult> Update([FromBody] UpdateInsturctorRequest instructor)
+        {
+            var result = await _instructorService.Update(instructor);
+            return Ok(result);
+        }
 
-        //[HttpPost("delete")]
-        //public async Task<IActionResult> Delete([FromBody] Instructor instructor)
-        //{
-        //    await _instructorService.Delete(instructor);
-        //    return Ok();
-        //}
+        [HttpDelete("Delete")]
+        public async Task<IActionResult> Delete([FromBody] DeleteInstructorRequest instructor)
+        {
+            var result = await _instructorService.Delete(instructor);
+            return Ok(result);
+        }
+
+        [HttpGet("GetById")]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            var result = await _instructorService.GetAsync(c => c.Id == id);
+            return Ok(result);
+        }
     }
 }
