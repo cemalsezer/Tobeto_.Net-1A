@@ -9,8 +9,8 @@ namespace DataAccess.EntityConfigurations
         public void Configure(EntityTypeBuilder<Product> builder)
         {
             builder.ToTable("Products").HasKey(b => b.Id);
-            builder.Property(b => b.Id).HasColumnName("ProductId").IsRequired();
-            builder.Property(b => b.CategoryID).HasColumnName("CategoryID");
+            builder.Property(b => b.Id).HasColumnName("ProductID").IsRequired();
+            builder.Property(b => b.CategoryId).HasColumnName("CategoryID");
 
             builder.Property(b => b.ProductName).HasColumnName("ProductName").IsRequired();
             builder.Property(b => b.UnitPrice).HasColumnName("UnitPrice");

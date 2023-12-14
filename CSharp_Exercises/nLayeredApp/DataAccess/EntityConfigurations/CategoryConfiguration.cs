@@ -17,7 +17,7 @@ namespace DataAccess.EntityConfigurations
             builder.ToTable("Categories").HasKey(b => b.Id);
             builder.Property(b => b.Id).HasColumnName("CategoryID").IsRequired(); 
             builder.Property(b => b.CategoryName).HasColumnName("CategoryName").IsRequired();
-            builder.HasIndex(indexExpression: b => b.CategoryName, name: "UK_Categories_Name").IsUnique();
+            builder.HasIndex(indexExpression: b => b.CategoryName, name: "UK_Categories_CategoryName").IsUnique();
             builder.HasMany(b => b.Products);
             builder.HasQueryFilter(b => !b.DeletedDate.HasValue);
 
