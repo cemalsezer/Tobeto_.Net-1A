@@ -48,7 +48,7 @@ namespace Business.Concretes
 
             //return createdProductResponse;
         }
-        public async Task<Paginate<GetListedProductResponse>> GetListAsync()
+        public async Task<IPaginate<GetListedProductResponse>> GetListAsync()
         {
             var data = await _productDal.GetListAsync(
                 include: p => p.Include(p => p.category)); 
