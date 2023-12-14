@@ -5,6 +5,7 @@ using Entities.Concretes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,9 +13,10 @@ namespace Business.Abstracts
 {
     public interface IInstructorService
     {
-        Task<Paginate<CreatedInstructorResponse>> GetListAsync();
+        Task<Paginate<GetListInstructorResponse>> GetListAsync();
         Task<CreatedInstructorResponse> Add(CreateInstructorRequest createInstructorRequest);
-        //Task Update(Instructor instructor);
-        //Task Delete(Instructor instructor);
+        Task<GetInstructorResponse> GetAsync(Expression<Func<Instructor, bool>> filter);
+        Task<UpdatedInsturctorResponse> Update(UpdateInsturctorRequest updateInstructorRequest);
+        Task<DeletedInsturctorResponse> Delete(DeleteInstructorRequest deleteInstructorRequest);
     }
 }

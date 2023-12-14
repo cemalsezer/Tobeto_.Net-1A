@@ -5,6 +5,7 @@ using Entities.Concretes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,10 +13,11 @@ namespace Business.Abstracts
 {
     public interface ICourseService
     {
-        Task<Paginate<CreatedCourseResponse>> GetListAsync();
+        Task<Paginate<GetListCourseResponse>> GetListAsync();
         Task<CreatedCourseResponse> Add(CreateCourseRequest createCourseRequest);
-        //Task Update(Course course);
-        //Task Delete(Course course);
+        Task<GetCourseResponse> GetAsync(Expression<Func<Course, bool>> filter);
+        Task<UpdatedCourseResponse> Update(UpdateCourseRequest updateCourseRequest);
+        Task<DeletedCourseResponse> Delete(DeleteCourseRequest deleteCourseRequest);
 
     }
 }
