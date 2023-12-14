@@ -9,7 +9,7 @@ namespace Entities.Concretes
 {
     public class Instructor : Entity<Guid>
     {
-        List<Course> Courses = new List<Course>();
+        public List<Course> Courses { get; set; }
         public string Name { get; set; }
     }
 }

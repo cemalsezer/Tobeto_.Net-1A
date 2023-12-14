@@ -8,15 +8,16 @@ using System.Threading.Tasks;
 namespace Entities.Concretes
 {
     public class Course : Entity<Guid>
-    {    
-        public string Name { get; set; }
-        public Guid InstructorId { get; set; }
+    {
         public Guid CategoryId { get; set; }
+        public Guid InstructorId { get; set; }
+        public string Name { get; set; }
         public string Description { get; set; }
-        public string ImgUrl { get; set; }
-        public double Price { get; set; }
-        public Instructor? CourseInstructor { get; set; } //FK
-        public Category? CourseCategory { get; set; } //FK
+        public decimal UnitPrice { get; set; }
+        public string ImageUrl { get; set; }
+
+        public Category Category { get; set; }
+        public Instructor Instructor { get; set; }
 
 
 
