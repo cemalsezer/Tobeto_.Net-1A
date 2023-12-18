@@ -1,7 +1,7 @@
 using DataAccess;
 using Business;
 using Business.Profiles;
-
+using Core.CrossCuttingConcerns.Exceptions.Extensions;
 
 namespace WebAPI
 {
@@ -30,7 +30,7 @@ namespace WebAPI
             }
 
             app.UseAuthorization();
-
+            app.ConfigureCustomExceptionMiddleware();
 
             app.MapControllers();
 
