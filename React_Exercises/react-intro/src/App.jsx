@@ -3,6 +3,8 @@ import "./App.css";
 import Homepage from "./pages/Homepage/Homepage";
 import About from "./pages/About/About";
 import Navbar from "./components/Navbar/Navbar";
+import ProductDetails from './components/ProductDetails/ProductDetails';
+
 
 function App() {
 	return (
@@ -11,6 +13,7 @@ function App() {
 			<BrowserRouter>
 				<Routes>
 					<Route path="/" element={<Homepage />}></Route>
+					<Route path='/product-detail/:id' element={<ProductDetails />}></Route>
 					<Route path="/about" element={<About />}></Route>
 					<Route path="*" element={<p>Not Found</p>}></Route>
 				</Routes>
@@ -19,3 +22,8 @@ function App() {
 	);
 }
 export default App;
+/* 
+Ürün detay sayfası
+Ürün ekleme sayfası
+Ürün silme fonksiyonu
+*/
