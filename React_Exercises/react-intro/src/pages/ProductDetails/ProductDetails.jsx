@@ -6,7 +6,7 @@ export default function ProductDetail() {
 
   const productURL = "https://dummyjson.com/products";
 
-  const params = useParams(); // location
+  const params = useParams(); 
   const [product, setProduct] = useState();
   useEffect(() => {
     if (params.id) {
