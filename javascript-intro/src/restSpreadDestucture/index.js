@@ -8,6 +8,17 @@ let showProducts = function(id,...products){
 // console.log(typeof showProducts)
 // showProducts(10,"Elma","Armut","Karpuz")
 
+console.log(Math.max(1, 2, 13, 5, 35, 65, 9))
+
+
+//spread - ayrıştırmak
+let points = [1, 2, 13, 5, 35, 65, 9]
+console.log(...points) //ayırır
+console.log(Math.max(...points)) // 65
+console.log(..."ABC","D", ..."EFG", ..."H") //A B C D E F G H 
+
+//Destructuring - PARÇALAMAK
+
 let populations = [10000,20000,30000,[40000,50000]]
 let [small,medium,high,[veryHigh,maximum]]=populations 
 console.log(small)

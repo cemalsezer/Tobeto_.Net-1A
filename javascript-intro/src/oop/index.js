@@ -1,14 +1,12 @@
-//!!!! JavaScripte Aslında herşey functiondur, classlar bile
 // class Customer{
 //     constructor(id, customerNumber){
 //     }
 // }
 
 // let customer = new Customer(1, "123456");
-// console.log(customer.id)    //undefined olur
-// console.log(customer.customerNumber)    //undefined olur-Aslında dikkat et sadece constructure a parametre geçtik
-//Ancak alanları tanımlarsak (içinde prototyping) this ile
-//Artık id ve customerNumber a erişilebilir
+// console.log(customer.id)    //undefined 
+// console.log(customer.name)   
+
 class Customer{
     constructor(id, customerNumber){
         this.id = id
@@ -16,15 +14,12 @@ class Customer{
     }
 }
 let customer = new Customer(1, "123456");
-console.log(customer.id)                //Artık okuyabiliriz.
-console.log(customer.customerNumber)    //Artık okuyabiliriz.
+console.log(customer.id)               
+console.log(customer.customerNumber)    
 
-//Prototyping >>> Bir classa SONRAdan yeni properties, attribute, fonk vb ekleme...
-// >> Instance de prototyping 
 customer.name = "Murat Kurtboğan"
 console.log(customer.name)
 
-// >> Class da prototyping 
 Customer.yenibisey = "Birşey"
 console.log(Customer.yenibisey)
 
