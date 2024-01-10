@@ -31,7 +31,14 @@ namespace WebAPI
 
             app.UseAuthorization();
             app.ConfigureCustomExceptionMiddleware();
-
+            app.UseCors(options =>
+            {
+                options.
+                WithOrigins("domain information","").
+                AllowAnyMethod().
+                AllowAnyHeader();
+            });
+            app.UseCors("MyPolicy");
             app.MapControllers();
 
             app.Run();

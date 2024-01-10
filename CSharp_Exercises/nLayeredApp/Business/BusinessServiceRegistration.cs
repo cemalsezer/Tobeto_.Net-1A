@@ -19,6 +19,11 @@ namespace Business
             services.AddScoped<IProductService, ProductManager>();
             services.AddScoped<ICategoryService, CategoryManager>();
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
+            services.AddCors(options =>
+            {
+                options.AddPolicy("MyPolicy",
+                    a => a.WithOrigins("domain info"));
+            });
             return services;
         }
         public static IServiceCollection AddSubClassesOfType(

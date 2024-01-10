@@ -17,9 +17,9 @@ namespace Business.Concretes
 {
     public class ProductManager : IProductService
     {
-        IProductDal _productDal;
-        IMapper _mapper;
-        ProductBusinessRules _productBusinessRules;
+        private IProductDal _productDal;
+        private IMapper _mapper;
+        private ProductBusinessRules _productBusinessRules;
 
         public ProductManager(IProductDal productDal, IMapper mapper, ProductBusinessRules productBusinessRules)
         {
@@ -40,17 +40,13 @@ namespace Business.Concretes
             return createdProductResponse;
         }
 
-        public async Task<IPaginate<GetListedProductResponse>> GetListAsync(GetListedProductResponse getListedProductResponse)
+        public async Task<Paginate<GetListedProductResponse>> GetListAsync()
         {
-            var data = await _productDal.GetListAsync(
-                    include: p => p.Include(p => p.category),
-                    index: getListedProductResponse,
-                    size: getListedProductResponseze
-
-                );
+            var data = await _productDal.GetListAsync(include: p => p.Include(p => p.category));
 
             var result = _mapper.Map<Paginate<GetListedProductResponse>>(data);
             return result;
         }
+
     }
 }
