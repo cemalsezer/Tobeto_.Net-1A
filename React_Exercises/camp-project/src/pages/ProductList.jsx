@@ -11,15 +11,28 @@ import {
     Label,
     Menu,
     Table,
+    Button
   } from 'semantic-ui-react'
 import ProductService from '../services/productService'
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../store/actions/cartActions";
+import { toast } from "react-toastify";
 
 export default function ProductList() {
+const dispatch = useDispatch();
 const [products, setProducts] = useState([])
+
 useEffect(()=>{
     let productService= new ProductService()
-    productService.getProducts().then(result=>setProducts(result.data.data))
-})
+    productService.getProducts()
+    .then(result=>setProducts(result.data.products))
+},[])
+
+const handleAddToCart=(product)=>{
+  dispatch(addToCart(product));
+  toast(`${product.title} sepete eklendi.`)
+}
 
   return (
     <div>  
@@ -31,17 +44,22 @@ useEffect(()=>{
         <TableHeaderCell>Stok Adedi</TableHeaderCell>
         <TableHeaderCell>Açıklama</TableHeaderCell>
         <TableHeaderCell>Kategori</TableHeaderCell>
+        <TableHeaderCell></TableHeaderCell>
       </TableRow>
     </TableHeader>
 
     <TableBody>
         {products.map((product) => (
                 <TableRow key={product.id}>
-                  <TableCell>{product.productName}</TableCell>
-                  <TableCell>{product.unitPrice}</TableCell>
+                     <TableCell>
+                         <Link to={`/products/${product.id}`}>{product.title}</Link>
+                    </TableCell>
+                  <TableCell>{product.price}</TableCell>
+                  <TableCell>{product.stock}</TableCell>
                   <TableCell>{product.unitsInStock}</TableCell>
-                  <TableCell>{product.quantityPerUnit}</TableCell>
-                  <TableCell>{product.category.categoryName}</TableCell>
+                  <TableCell>{product.description}</TableCell>
+                  <TableCell>{product.category}</TableCell>
+                  <TableCell><Button onClick={()=>handleAddToCart(product)}>Sepete Ekle</Button></TableCell>
                 </TableRow>
             ))}
       

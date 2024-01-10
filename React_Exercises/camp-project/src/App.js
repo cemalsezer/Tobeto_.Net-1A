@@ -1,4 +1,4 @@
-import { Container } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';  
 import './App.css';
 import Dashboard from './layouts/Dashboard';
 import 'semantic-ui-css/semantic.min.css'
