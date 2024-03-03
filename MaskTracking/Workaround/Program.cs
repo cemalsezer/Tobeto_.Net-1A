@@ -1,4 +1,7 @@
-﻿namespace Workaround
+﻿using Business.Concrete;
+using Entities.Concrete;
+
+namespace Workaround
 {
     internal class Program
     {
@@ -33,12 +36,48 @@
                 Console.WriteLine(ogrenciler[i]);
             }
 
+            Console.WriteLine("-----------");
+
             string[] sehirler1 = new [] { "Ankara", "İstanbul", "İzmir" };
             string[] sehirler2 = new [] { "Bursa", "LA", "New York" };
-
-            sehirler2 = sehirler1;
-            sehirler1[0] = "Adana";
+            Console.WriteLine(sehirler1[0]);
             Console.WriteLine(sehirler2[0]);
+
+            sehirler2 = sehirler1;//sehirler2'nin referans numarası sehirler1'in referans numarasını tutar. Garbage collector boşta duran sehirler2'nin referansını bellekten kaldırır.
+            sehirler1[0] = "Adana";
+            Console.WriteLine(sehirler1[0]);
+            Console.WriteLine(sehirler2[0]);
+
+            int sayi1 = 10;//int, bool, double gibi veri tipleri "değer veri tipleri"dir. Değer tiplerinde değer, referans tiplerde referans atanır.
+            int sayi2 = 20;
+            sayi2 = sayi1;
+            sayi1 = 30;
+            Console.WriteLine(sayi2);
+
+            //stringler bir referans tipli veri tipidir
+            Person person1 = new Person();
+            person1.FirstName = "Cemal";
+            person1.LastName = "Sezer";
+            person1.DateOtfBirthYear = 1998;
+            person1.NationalIdentity = 123;
+
+
+            foreach(string sehir in sehirler1 )
+            {
+                Console.WriteLine(sehir);
+            }
+            Console.WriteLine("-----------");
+
+            List<string> yeniSehirler = new List<string> { "Ankara", "iZMİR", "iSTANBUL" };
+            yeniSehirler.Add("bursa");
+
+            foreach (string item in yeniSehirler)
+            {
+                Console.WriteLine(item);
+            }
+
+            PttManager pttManager = new PttManager(new PersonManager());
+            pttManager.GiveMask(person1);
         }
 
         static void SelamVer(string isim = "isimsiz")
