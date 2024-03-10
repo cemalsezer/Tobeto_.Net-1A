@@ -11,6 +11,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Interfaces", "Interfaces\In
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Generics", "Generics\Generics.csproj", "{A623CA01-6ACD-439B-B715-ECACA473DD4E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThreadingDemo1", "ThreadingDemo1\ThreadingDemo1.csproj", "{A2C81E8F-2B65-4B63-BEED-1DBCE2E08FD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqProject", "LinqProject\LinqProject.csproj", "{4B3093CE-8D93-415A-BAD4-8168D758BB79}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{A623CA01-6ACD-439B-B715-ECACA473DD4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A623CA01-6ACD-439B-B715-ECACA473DD4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A623CA01-6ACD-439B-B715-ECACA473DD4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2C81E8F-2B65-4B63-BEED-1DBCE2E08FD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2C81E8F-2B65-4B63-BEED-1DBCE2E08FD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2C81E8F-2B65-4B63-BEED-1DBCE2E08FD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2C81E8F-2B65-4B63-BEED-1DBCE2E08FD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B3093CE-8D93-415A-BAD4-8168D758BB79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B3093CE-8D93-415A-BAD4-8168D758BB79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B3093CE-8D93-415A-BAD4-8168D758BB79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B3093CE-8D93-415A-BAD4-8168D758BB79}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
